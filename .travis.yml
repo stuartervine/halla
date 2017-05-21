@@ -1,14 +1,13 @@
 language: node_js
+node_js:
+  - "7"
 dist: trusty
 sudo: required
+services:
+  - docker
 before_install:
-  - sudo apt-get update -q
-  - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo apt-key fingerprint 0EBFCD88
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y
-  - sudo apt-get update -q
-  - sudo apt-get install docker-ce -y
+  - docker pull concourse/concourse
+  - docker pull postgres:9.5
 script: npm test
 notifications:
   email:
