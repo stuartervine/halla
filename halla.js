@@ -101,7 +101,6 @@ module.exports = {
     },
     concourse_basic_auth: (target, concourseUrl, username, password) => {
         return new Promise((resolve, reject) => {
-            execSync(`fly -t ${target} sync`);
             const login = spawn('fly', ['-t', target, 'login', '--concourse-url', concourseUrl, '-u', username, '-p', password]);
 
             login.stdout.on('data', (data) => {
@@ -109,6 +108,7 @@ module.exports = {
                     let targetSaved = data.toString().match(/(target saved)/gm);
                     if (targetSaved) {
                         console.log('Logging into Concourse: ' + concourseUrl);
+                        execSync(`fly -t ${target} sync`);
                         resolve(remoteConcourse(target));
                     }
                 }
