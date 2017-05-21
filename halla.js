@@ -108,6 +108,7 @@ module.exports = {
                     let targetSaved = data.toString().match(/(target saved)/gm);
                     if (targetSaved) {
                         console.log('Logging into Concourse: ' + concourseUrl);
+                        console.log(execSync('docker ps -a').toString());
                         resolve(remoteConcourse(target));
                     }
                 }
