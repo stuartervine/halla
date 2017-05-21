@@ -3,18 +3,20 @@ node_js:
   - "7"
 dist: trusty
 sudo: required
-services:
-  - docker
 env:
   DOCKER_COMPOSE_VERSION: 1.11.2
 before_install:
-  - wget https://github.com/concourse/concourse/releases/download/v3.0.1/fly_linux_amd64 -O /tmp/fly
+  - sudo apt-get update -q
+  - sudo apt-get install wget apt-transport-https ca-certificates curl software-properties-common -y
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo apt-key fingerprint 0EBFCD88
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y
+  - sudo apt-get update -q
+  - sudo apt-get install docker-ce -y
+  - wget https://github.com/concourse/concourse/releases/download/v3.0.0/fly_linux_amd64 -O /tmp/fly
   - chmod +x /tmp/fly
   - export PATH=$PATH:/tmp
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+  - docker-compose --version
   - docker pull concourse/concourse
   - docker pull postgres:9.5
 script: npm test
