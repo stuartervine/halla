@@ -108,7 +108,6 @@ module.exports = {
                     let targetSaved = data.toString().match(/(target saved)/gm);
                     if (targetSaved) {
                         console.log('Logging into Concourse: ' + concourseUrl);
-                        execSync(`fly -t ${target} sync`);
                         resolve(remoteConcourse(target));
                     }
                 }
