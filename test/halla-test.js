@@ -4,7 +4,7 @@ const reverseEngineerYaml = require('../halla').reverseEngineerYaml;
 const build = require('../halla').build;
 
 describe('halla', () => {
-    describe('reverse engineer yaml', () => {
+    describe('reverse engineers yaml', () => {
         it('turns yaml into a javascript object', () => {
             let yaml = `resources:
                         - name: git-repo

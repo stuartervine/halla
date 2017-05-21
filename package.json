@@ -6,7 +6,7 @@
   "author": "Stuart Ervine",
   "license": "MIT",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./halla.test.js"
+    "test": "./node_modules/.bin/mocha"
   },
   "dependencies": {
     "js-yaml": "^3.8.4"

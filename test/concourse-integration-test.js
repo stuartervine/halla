@@ -58,16 +58,16 @@ const expectedImportedPipeline = {
     }]
 };
 
-describe('halla', () => {
-    before(function(done) {
+describe('halla concourse integration', () => {
+    before(function (done) {
         this.timeout(60000);
         dockerCompose.up('./test/concourse/docker-compose.yml');
         waitOn({resources: ['http://localhost:8080/api/v1/info']}, (err) => {
             done(err);
         });
-});
+    });
 
-    after(function() {
+    after(function () {
         this.timeout(10000);
         dockerCompose.down('./test/concourse/docker-compose.yml');
     });
