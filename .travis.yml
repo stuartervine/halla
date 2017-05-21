@@ -1,0 +1,9 @@
+language: node_js
+before_install:
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y
+  - sudo apt-get update -q
+  - sudo apt-get install docker-ce -y
+script: npm test
+notifications:
+  email:
+    on_success: never
