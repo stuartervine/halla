@@ -1,7 +1,7 @@
 {
   "name": "halla",
   "version": "1.0.2",
-  "description": "A module to create concourse pipelines in javascript. This allows composition of pipelines.",
+  "description": "A module to compose concourse pipelines in javascript.",
   "main": "halla.js",
   "author": "Stuart Ervine",
   "license": "MIT",
