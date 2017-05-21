@@ -13,7 +13,7 @@ before_install:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y
   - sudo apt-get update -q
   - sudo apt-get install docker-ce -y
-  - wget https://github.com/concourse/concourse/releases/download/v3.0.0/fly_linux_amd64 -O /tmp/fly
+  - wget https://github.com/concourse/concourse/releases/download/v3.0.1/fly_linux_amd64 -O /tmp/fly
   - chmod +x /tmp/fly
   - export PATH=$PATH:/tmp
   - sudo rm /usr/local/bin/docker-compose
