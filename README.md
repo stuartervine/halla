@@ -38,6 +38,6 @@ const pipeline_yml = halla.build({ ... your javascript pipeline object ... });
 
 halla.concourse('target', 'concourse-url', 'team-name')
     .then((logged_in_concourse) => {
-        logged_in_concourse.publish('my-awesome-pipeline', pipeline_yml);
+        logged_in_concourse.publish({name:'my-awesome-pipeline', yaml:pipeline_yml});
     });
 ~~~
