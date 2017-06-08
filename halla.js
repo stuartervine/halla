@@ -61,8 +61,8 @@ const remoteConcourse = (target) => {
                 let pipelineFile = path.join(os.tmpdir(), 'temp_pipeline.yml');
                 fs.writeFileSync(pipelineFile, pipeline.yaml);
                 let publishPipelineCommand = exec(`fly -t ${target} set-pipeline -p ${pipeline.name} --config ${pipelineFile}`);
+                publishPipelineCommand.stdin.write('y\n');
                 publishPipelineCommand.stdout.on('data', () => {
-                    publishPipelineCommand.stdin.write('y\n');
                     while (execSync(`fly -t ${target} pipelines`).toString().indexOf(pipeline.name) === -1) {
                     }
                     resolve(concourse);
