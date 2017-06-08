@@ -1,6 +1,6 @@
 {
   "name": "halla",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A module to compose concourse pipelines in javascript.",
   "main": "halla.js",
   "author": "Stuart Ervine",
